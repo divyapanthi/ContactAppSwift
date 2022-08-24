@@ -2,7 +2,7 @@
 //  AddContactVC.swift
 //  ContactApp
 //
-//  Created by Sushil Dhital on 22/08/2022.
+//  Created by Divya Panthi on 22/08/2022.
 //
 
 import UIKit
@@ -33,7 +33,9 @@ class AddContactVC: UIViewController {
     
     weak var delegate: ContactProtocol?
     
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         self.txtNumber.isHidden = true
@@ -54,31 +56,211 @@ class AddContactVC: UIViewController {
     
     @IBAction func btnDoneAction(_ sender: Any) {
         
+        checkValidity()
+        
+        
+    }
+    
+    func checkValidity(){
+        
+        checkFirstNameValidation()
+        
+        checkLastNameValidation()
+        
+        checkPhoneNumberValidation()
         
         delegate?.passData(firstName: txtFirstName.text!, lastName: txtLastName.text!, address: txtAddress.text!, email: txtEmail.text! ,number: txtNumber.text!)
         
-        if txtFirstName.text!.isEmpty || txtLastName.text!.isEmpty || txtNumber.text!.isEmpty {
+    }
+    
+    
+    func checkFirstNameValidation(){
+        
+        
+            if txtFirstName.text!.isEmpty
+            {
+                txtFirstName.placeholder = "Required*"
+                
+                txtFirstName.layer.borderColor = UIColor.red.cgColor
+                
+                txtFirstName.layer.borderWidth = 0.5
+
+            }
+    
+            else if let errorMessage = invalidFirstName(txtFirstName.text ?? "")
+            {
+                txtFirstName.text = ""
+                txtFirstName.attributedPlaceholder = NSAttributedString(
+                    string: errorMessage,
+                    attributes: [NSAttributedString.Key.foregroundColor: UIColor.red]
+                )
+    
+            }
+                
+            else{
+                
+            }
+        
+    }
+    
+    func checkLastNameValidation(){
+        
+        if txtLastName.text!.isEmpty
+        {
+           txtLastName.placeholder = "Required*"
+           
+           txtLastName.layer.borderColor = UIColor.red.cgColor
             
-            txtFirstName.layer.borderColor = UIColor.red.cgColor
-            
-            txtFirstName.layer.borderWidth = 0.5
-            
-            txtLastName.layer.borderColor = UIColor.red.cgColor
-            
-            txtLastName.layer.borderWidth = 0.5
-            
-            txtNumber.layer.borderColor = UIColor.red.cgColor
-            
-            txtNumber.layer.borderWidth = 0.5
-            
+           txtLastName.layer.borderWidth = 0.5
+
+
         }
         
+        else if let errorMessage = invalidLastName(txtLastName.text ?? "")
+        {
+            txtLastName.text = ""
+            txtLastName.attributedPlaceholder = NSAttributedString(
+                string: errorMessage,
+                attributes: [NSAttributedString.Key.foregroundColor: UIColor.red]
+            )
+        }
         else{
-            
-            self.navigationController?.popViewController(animated: true)
-            
+            return
         }
         
     }
     
-}
+    
+    func checkEmailValidation(){
+        
+        if let errorMessage = invalidEmail(txtEmail.text ?? "")
+        {
+            txtEmail.attributedPlaceholder = NSAttributedString(
+                string: errorMessage,
+                attributes: [NSAttributedString.Key.foregroundColor: UIColor.red]
+                )
+        }
+        
+        else{
+            
+            return
+            
+            }
+
+        }
+        
+    
+    func checkPhoneNumberValidation(){
+        
+        if txtNumber.text!.isEmpty
+        {
+            txtNumber.isHidden = false
+            
+            txtNumber.placeholder = "Required*"
+            
+            txtNumber.layer.borderColor = UIColor.red.cgColor
+            
+            txtNumber.layer.borderWidth =  0.5
+
+        }
+        
+        else if let errorMessage = invalidPhoneNumber(txtNumber.text ?? "")
+        {
+            txtNumber.text = ""
+            txtNumber.attributedPlaceholder = NSAttributedString(
+                string: errorMessage,
+                attributes: [NSAttributedString.Key.foregroundColor: UIColor.red]
+            )
+        }
+            
+        else{
+            
+                
+            }
+        }
+        
+    }
+
+    
+    
+    func invalidPhoneNumber(_ value: String) -> String?
+    {
+        let set = CharacterSet(charactersIn: value)
+        if !CharacterSet.decimalDigits.isSuperset(of: set)
+        {
+            return "Phone Number must contain only digits"
+        }
+        
+        if value.count != 10
+        {
+            return "Phone Number must be 10 Digits in Length"
+        }
+        return nil
+    
+    }
+    
+    func invalidFirstName(_ value : String) ->  String?
+    {
+        
+        if value.count<5 {
+            
+            return  "First name should contain at least 4 characters"
+            
+        }
+            
+        if containsDigit(value){
+            
+            return "Invalid first name"
+            
+        }
+        
+        return nil
+        
+    }
+    
+    func invalidLastName(_ value : String) ->  String?
+    {
+        
+        if value.count<5 {
+            
+            return  "Last name should contain at least 4 characters"
+            
+        }
+            
+        if containsDigit(value){
+            
+            return "Invalid last name"
+            
+        }
+        
+        return nil
+        
+    }
+    
+    func invalidEmail(_ value: String) -> String?
+        {
+            let reqularExpression = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+            
+            let predicate = NSPredicate(format: "SELF MATCHES %@", reqularExpression)
+            
+            if !predicate.evaluate(with: value)
+                
+            {
+                return "Invalid Email Address"
+                
+            }
+            
+            return nil
+        }
+    
+    func containsDigit(_ value: String) -> Bool
+    {
+        let reqularExpression = ".*[0-9]+.*"
+        let predicate = NSPredicate(format: "SELF MATCHES %@", reqularExpression)
+        return !predicate.evaluate(with: value)
+    }
+        
+    
+    
+
+

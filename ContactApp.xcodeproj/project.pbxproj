@@ -19,6 +19,10 @@
 		DA9C7C5828B38B82009C6200 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA9C7C5628B38B82009C6200 /* LaunchScreen.storyboard */; };
 		DAC2E36628B4CAA70035B0CC /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC2E36528B4CAA70035B0CC /* ProfileVC.swift */; };
 		DAC2E36828B4CABC0035B0CC /* ViewProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAC2E36728B4CABC0035B0CC /* ViewProfile.storyboard */; };
+		DAD1CA5728B65347001C8CE1 /* CellImageCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD1CA5528B65347001C8CE1 /* CellImageCollection.swift */; };
+		DAD1CA5828B65347001C8CE1 /* CellImageCollection.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAD1CA5628B65347001C8CE1 /* CellImageCollection.xib */; };
+		DAE0511628B6929500EF0D40 /* ImageCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE0511528B6929500EF0D40 /* ImageCollectionVC.swift */; };
+		DAE0511828B6930D00EF0D40 /* ImageCollection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAE0511728B6930D00EF0D40 /* ImageCollection.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +40,10 @@
 		DA9C7C5928B38B82009C6200 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DAC2E36528B4CAA70035B0CC /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		DAC2E36728B4CABC0035B0CC /* ViewProfile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ViewProfile.storyboard; sourceTree = "<group>"; };
+		DAD1CA5528B65347001C8CE1 /* CellImageCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellImageCollection.swift; sourceTree = "<group>"; };
+		DAD1CA5628B65347001C8CE1 /* CellImageCollection.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellImageCollection.xib; sourceTree = "<group>"; };
+		DAE0511528B6929500EF0D40 /* ImageCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionVC.swift; sourceTree = "<group>"; };
+		DAE0511728B6930D00EF0D40 /* ImageCollection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ImageCollection.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +62,8 @@
 			children = (
 				DA777B9228B4A69A00D9498B /* CellContacts.swift */,
 				DA777B9328B4A69A00D9498B /* CellContacts.xib */,
+				DAD1CA5528B65347001C8CE1 /* CellImageCollection.swift */,
+				DAD1CA5628B65347001C8CE1 /* CellImageCollection.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -61,6 +71,7 @@
 		DA91C5A628B397290079798F /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				DAE0511528B6929500EF0D40 /* ImageCollectionVC.swift */,
 				DA9C7C4F28B38B7F009C6200 /* HomeVC.swift */,
 				DA91C5AA28B39B370079798F /* AddContactVC.swift */,
 				DAC2E36528B4CAA70035B0CC /* ProfileVC.swift */,
@@ -74,6 +85,7 @@
 				DA9C7C5128B38B7F009C6200 /* Main.storyboard */,
 				DA91C5A828B3975C0079798F /* AddContact.storyboard */,
 				DAC2E36728B4CABC0035B0CC /* ViewProfile.storyboard */,
+				DAE0511728B6930D00EF0D40 /* ImageCollection.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -167,12 +179,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAE0511828B6930D00EF0D40 /* ImageCollection.storyboard in Resources */,
 				DA9C7C5828B38B82009C6200 /* LaunchScreen.storyboard in Resources */,
 				DAC2E36828B4CABC0035B0CC /* ViewProfile.storyboard in Resources */,
 				DA777B9528B4A69A00D9498B /* CellContacts.xib in Resources */,
 				DA91C5A928B3975C0079798F /* AddContact.storyboard in Resources */,
 				DA9C7C5528B38B82009C6200 /* Assets.xcassets in Resources */,
 				DA9C7C5328B38B7F009C6200 /* Main.storyboard in Resources */,
+				DAD1CA5828B65347001C8CE1 /* CellImageCollection.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,7 +197,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAD1CA5728B65347001C8CE1 /* CellImageCollection.swift in Sources */,
 				DAC2E36628B4CAA70035B0CC /* ProfileVC.swift in Sources */,
+				DAE0511628B6929500EF0D40 /* ImageCollectionVC.swift in Sources */,
 				DA777B9428B4A69A00D9498B /* CellContacts.swift in Sources */,
 				DA9C7C5028B38B7F009C6200 /* HomeVC.swift in Sources */,
 				DA9C7C4C28B38B7F009C6200 /* AppDelegate.swift in Sources */,
