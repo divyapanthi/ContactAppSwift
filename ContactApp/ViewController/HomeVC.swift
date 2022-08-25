@@ -121,7 +121,6 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource{
                 
         self.navigationController?.pushViewController(controller, animated: true)
        
-        
     }
     
 }
