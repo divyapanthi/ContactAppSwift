@@ -7,6 +7,8 @@
 
 import UIKit
 
+
+
 protocol ContactProtocol: AnyObject{
     
     func passData(firstName: String, lastName: String, address: String, email: String, number: String?)
@@ -29,8 +31,6 @@ class AddContactVC: UIViewController {
     
     @IBOutlet weak var btnDone: UIBarButtonItem!
     
-    @IBOutlet weak var contactStackView: UIStackView!
-    
     weak var delegate: ContactProtocol?
     
     
@@ -39,6 +39,17 @@ class AddContactVC: UIViewController {
         super.viewDidLoad()
         
         self.txtNumber.isHidden = true
+        
+        
+    }
+    
+    
+    @IBAction func btnAddImageAction(_ sender: Any) {
+        
+        let storyboard = UIStoryboard(name: "ImageCollection", bundle: nil)
+        
+        let controller = storyboard.instantiateViewController(withIdentifier: "ImageCollectionVC")
+        self.present(controller, animated: true, completion: nil)
         
     }
     
@@ -58,6 +69,7 @@ class AddContactVC: UIViewController {
         
         checkValidity()
         
+        delegate?.passData(firstName: txtFirstName.text!, lastName: txtLastName.text!, address: txtAddress.text!, email: txtEmail.text! ,number: txtNumber.text!)
         
     }
     
@@ -67,9 +79,9 @@ class AddContactVC: UIViewController {
         
         checkLastNameValidation()
         
-        checkPhoneNumberValidation()
+        checkEmailVaildation()
         
-        delegate?.passData(firstName: txtFirstName.text!, lastName: txtLastName.text!, address: txtAddress.text!, email: txtEmail.text! ,number: txtNumber.text!)
+        checkPhoneNumberValidation()
         
     }
     
@@ -130,15 +142,18 @@ class AddContactVC: UIViewController {
         
     }
     
-    
-    func checkEmailValidation(){
+    func checkEmailVaildation(){
         
-        if let errorMessage = invalidEmail(txtEmail.text ?? "")
-        {
-            txtEmail.attributedPlaceholder = NSAttributedString(
-                string: errorMessage,
-                attributes: [NSAttributedString.Key.foregroundColor: UIColor.red]
-                )
+        if !txtEmail.text!.isEmpty{
+            
+            if let errorMessage = invalidEmail(txtEmail.text!)
+            {
+                txtEmail.attributedPlaceholder = NSAttributedString(
+                    string: errorMessage,
+                    attributes: [NSAttributedString.Key.foregroundColor: UIColor.red]
+                    )
+            }
+            
         }
         
         else{
@@ -146,8 +161,7 @@ class AddContactVC: UIViewController {
             return
             
             }
-
-        }
+    }
         
     
     func checkPhoneNumberValidation(){
@@ -155,6 +169,8 @@ class AddContactVC: UIViewController {
         if txtNumber.text!.isEmpty
         {
             txtNumber.isHidden = false
+            
+            self.btnAddContact.isEnabled = false
             
             txtNumber.placeholder = "Required*"
             
@@ -178,11 +194,64 @@ class AddContactVC: UIViewController {
                 
             }
         }
+
+
+    
+    func invalidFirstName(_ value : String) ->  String?
+    {
+        
+        if value.count<5 {
+            
+            return  "First name should contain at least 4 characters"
+            
+        }
+            
+        if !containsDigit(value){
+            
+            return "Invalid first name"
+            
+        }
+        
+        return nil
+        
+    }
+    
+    func invalidLastName(_ value : String) ->  String?
+    {
+
+        if value.count<5 {
+            
+            return  "Last name should contain at least 4 characters"
+            
+        }
+            
+        if !containsDigit(value){
+            
+            return "Invalid last name"
+            
+        }
+        
+        return nil
         
     }
 
     
-    
+    func invalidEmail(_ value: String) -> String?
+    {
+        let reqularExpression = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        
+        let predicate = NSPredicate(format: "SELF MATCHES %@", reqularExpression)
+            
+        if !predicate.evaluate(with: value)
+                
+        {
+            return "Invalid Email Address"
+                
+        }
+        
+        return nil
+    }
+
     func invalidPhoneNumber(_ value: String) -> String?
     {
         let set = CharacterSet(charactersIn: value)
@@ -196,71 +265,19 @@ class AddContactVC: UIViewController {
             return "Phone Number must be 10 Digits in Length"
         }
         return nil
-    
+
     }
-    
-    func invalidFirstName(_ value : String) ->  String?
-    {
-        
-        if value.count<5 {
-            
-            return  "First name should contain at least 4 characters"
-            
-        }
-            
-        if containsDigit(value){
-            
-            return "Invalid first name"
-            
-        }
-        
-        return nil
-        
-    }
-    
-    func invalidLastName(_ value : String) ->  String?
-    {
-        
-        if value.count<5 {
-            
-            return  "Last name should contain at least 4 characters"
-            
-        }
-            
-        if containsDigit(value){
-            
-            return "Invalid last name"
-            
-        }
-        
-        return nil
-        
-    }
-    
-    func invalidEmail(_ value: String) -> String?
-        {
-            let reqularExpression = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-            
-            let predicate = NSPredicate(format: "SELF MATCHES %@", reqularExpression)
-            
-            if !predicate.evaluate(with: value)
-                
-            {
-                return "Invalid Email Address"
-                
-            }
-            
-            return nil
-        }
     
     func containsDigit(_ value: String) -> Bool
     {
         let reqularExpression = ".*[0-9]+.*"
+        
         let predicate = NSPredicate(format: "SELF MATCHES %@", reqularExpression)
+        
         return !predicate.evaluate(with: value)
     }
         
     
-    
+}
 
 

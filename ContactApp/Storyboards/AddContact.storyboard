@@ -11,13 +11,12 @@
         <!--Add ContactVC-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="AddContactVC" id="Y6W-OH-hqX" customClass="AddContactVC" customModule="ContactApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="0Rd-kz-aht">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="0Rd-kz-aht">
                                 <rect key="frame" x="107" y="120.5" width="200" height="199"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="g5W-ED-rkr"/>
@@ -145,15 +144,31 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tez-OU-qQD">
+                                <rect key="frame" x="247" y="120" width="77" height="53"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="77" id="FG7-ti-xVN"/>
+                                    <constraint firstAttribute="height" constant="53" id="vua-dd-oJg"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system" title=""/>
+                                <connections>
+                                    <action selector="btnAddImageAction:" destination="Y6W-OH-hqX" eventType="primaryActionTriggered" id="zoC-g8-cE4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="0Rd-kz-aht" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="32" id="05K-GF-rhL"/>
+                            <constraint firstItem="t8w-KL-cQQ" firstAttribute="top" secondItem="tez-OU-qQD" secondAttribute="bottom" constant="179" id="B6F-hR-deC"/>
                             <constraint firstItem="t8w-KL-cQQ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="WI1-TC-GEE"/>
+                            <constraint firstItem="tez-OU-qQD" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="32" id="asx-f8-6LV"/>
                             <constraint firstItem="0Rd-kz-aht" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="cAG-j5-aqS"/>
                             <constraint firstItem="t8w-KL-cQQ" firstAttribute="top" secondItem="0Rd-kz-aht" secondAttribute="bottom" constant="32" id="cAe-0g-D8h"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="tez-OU-qQD" secondAttribute="trailing" constant="90" id="fba-tF-pI5"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="t8w-KL-cQQ" secondAttribute="trailing" constant="20" id="meA-2S-57I"/>
+                            <constraint firstItem="tez-OU-qQD" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="247" id="w69-LA-QJV"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="r5f-TL-zcg">
@@ -173,6 +188,7 @@
                         <outlet property="txtNumber" destination="vab-yb-XIq" id="9pW-xj-rcK"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="928.98550724637687" y="65.625"/>
         </scene>
@@ -196,7 +212,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="person.circle" catalog="system" width="128" height="121"/>
+        <image name="person.circle.fill" catalog="system" width="128" height="121"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

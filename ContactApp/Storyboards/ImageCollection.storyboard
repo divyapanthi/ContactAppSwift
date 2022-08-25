@@ -16,10 +16,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="icW-Ye-AOO">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Fm2-Cs-Wcp">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mBV-LP-zMx">
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tZf-MF-3vj">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -27,18 +27,18 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                                 <connections>
-                                    <outlet property="dataSource" destination="5EZ-qb-Rvc" id="e1T-Jg-Lzt"/>
-                                    <outlet property="delegate" destination="5EZ-qb-Rvc" id="fj3-JF-tMU"/>
+                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="4QZ-NV-fff"/>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="BGi-hM-tbW"/>
                                 </connections>
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="icW-Ye-AOO" secondAttribute="trailing" id="0qz-08-Och"/>
-                            <constraint firstItem="icW-Ye-AOO" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="pwr-V2-OuB"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="icW-Ye-AOO" secondAttribute="bottom" id="sgF-tT-sSU"/>
-                            <constraint firstItem="icW-Ye-AOO" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="u8g-oC-2ba"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Fm2-Cs-Wcp" secondAttribute="trailing" id="Bld-gP-3CP"/>
+                            <constraint firstItem="Fm2-Cs-Wcp" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="IC4-2b-qAZ"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Fm2-Cs-Wcp" secondAttribute="bottom" id="Vww-BD-wTT"/>
+                            <constraint firstItem="Fm2-Cs-Wcp" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="aT4-B6-qtR"/>
                         </constraints>
                     </view>
                 </viewController>
