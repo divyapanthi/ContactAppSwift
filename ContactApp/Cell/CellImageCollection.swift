@@ -8,10 +8,13 @@
 import UIKit
 
 class CellImageCollection: UICollectionViewCell {
+    
+    @IBOutlet weak var imgProfile: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+            
     }
 
 }

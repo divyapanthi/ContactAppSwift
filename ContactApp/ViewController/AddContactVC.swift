@@ -44,7 +44,7 @@ class AddContactVC: UIViewController {
     @IBOutlet weak var contactError: UILabel!
     
     @IBOutlet weak var addressError: UILabel!
-
+    
     
     weak var delegate: ContactProtocol?
     
@@ -57,53 +57,47 @@ class AddContactVC: UIViewController {
     
     
     func resetForm()
-        {
-            self.txtNumber.isHidden = true
-            
-            btnDone.isEnabled = false
-//
-            firstNameError.isHidden = false
-            lastNameError.isHidden = false
-            
-            emailError.isHidden = true
-            addressError.isHidden = true
-//            contactError.isHidden = true
-//
-
-            contactError.isHidden = true
-            
-            firstNameError.text = "Required"
-            lastNameError.text = "Required"
-//            emailError.text = "Required"
-//            addressError.text = "Required"
-            contactError.text = "Required"
-            
-            txtFirstName.text = ""
-            txtLastName.text = ""
-            txtEmail.text = ""
-            txtAddress.text = ""
-            txtNumber.text = ""
-        }
+    {
+        self.txtNumber.isHidden = true
+        
+        btnDone.isEnabled = false
+        firstNameError.isHidden = false
+        lastNameError.isHidden = false
+        
+        emailError.isHidden = true
+        
+        contactError.isHidden = true
+        
+        firstNameError.text = "Required"
+        lastNameError.text = "Required"
+        contactError.text = "Required"
+        
+        txtFirstName.text = ""
+        txtLastName.text = ""
+        txtEmail.text = ""
+        txtAddress.text = ""
+        txtNumber.text = ""
+    }
     
     
     @IBAction func firstNameChanged(_ sender: Any)
-        {
+    {
         if let firstName = txtFirstName.text
+        {
+            if let errorMessage = invalidFirstName(firstName)
             {
-                if let errorMessage = invalidFirstName(firstName)
-                {
-                    firstNameError.text = errorMessage
-                    firstNameError.isHidden = false
-                }
-                else
-                {
-                    firstNameError.isHidden = true
-                }
+                firstNameError.text = errorMessage
+                firstNameError.isHidden = false
             }
-                
-            checkForValidForm()
-            
+            else
+            {
+                firstNameError.isHidden = true
+            }
         }
+        
+        checkForValidForm()
+        
+    }
     
     func invalidFirstName(_ value : String) ->  String?
     {
@@ -120,31 +114,31 @@ class AddContactVC: UIViewController {
     @IBAction func lastNameChanged(_ sender: Any)
     {
         if let lastName = txtLastName.text
+        {
+            if let errorMessage = invalidLastName(lastName)
             {
-                if let errorMessage = invalidLastName(lastName)
-                {
-                    lastNameError.text = errorMessage
-                    lastNameError.isHidden = false
-                }
-                else
-                {
-                    lastNameError.isHidden = true
-                }
+                lastNameError.text = errorMessage
+                lastNameError.isHidden = false
             }
-                    
-            checkForValidForm()
-            
+            else
+            {
+                lastNameError.isHidden = true
+            }
         }
+        
+        checkForValidForm()
+        
+    }
     
     func invalidLastName(_ value : String) ->  String?
     {
-
+        
         if value.count<4 {
             
             return  "Last name should contain at least 4 chars"
             
         }
-
+        
         return nil
         
     }
@@ -168,7 +162,7 @@ class AddContactVC: UIViewController {
                 emailError.isHidden = true
             }
         }
-                
+        
         checkForValidForm()
     }
     
@@ -177,30 +171,17 @@ class AddContactVC: UIViewController {
         let reqularExpression = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         
         let predicate = NSPredicate(format: "SELF MATCHES %@", reqularExpression)
-            
+        
         if !predicate.evaluate(with: value)
-                
+            
         {
             return "Invalid Email Address"
-                
+            
         }
         
         return nil
     }
     
-    
-    @IBAction func addressChanged(_ sender: Any)
-        {
-            if let address = txtAddress.text{
-                if  address.isEmpty {
-                    addressError.isHidden = false
-                }
-                else{
-                    addressError.isHidden = true
-                }
-            }
-            
-        }
     
     @IBAction func phoneNumberChanged(_ sender: Any)
     {
@@ -217,7 +198,7 @@ class AddContactVC: UIViewController {
             }
         }
         checkForValidForm()
-            
+        
     }
     
     func invalidPhoneNumber(_ value: String) -> String?
@@ -233,7 +214,7 @@ class AddContactVC: UIViewController {
             return "Phone Number must be 10 Digits in Length"
         }
         return nil
-
+        
     }
     
     
@@ -242,8 +223,14 @@ class AddContactVC: UIViewController {
         UIView.animateKeyframes(withDuration: 1, delay: .zero) {
             
             self.checkContact()
-        
+            
         }
+        
+    }
+    
+    @IBAction func btnDoneAction(_ sender: Any) {
+        
+        checkContact()
         
     }
     
@@ -257,21 +244,19 @@ class AddContactVC: UIViewController {
             
             self.btnAddContact.isEnabled = false
             
-        }
-    }
-    
-    @IBAction func btnDoneAction(_ sender: Any) {
-        
-        checkContact()
+        }else{
             
-        delegate?.passData(firstName: txtFirstName.text!, lastName: txtLastName.text!, address: txtAddress.text ?? "", email: txtEmail.text ?? "" ,number: txtNumber.text!)
-        
+            delegate?.passData(firstName: txtFirstName.text!, lastName: txtLastName.text!, address: txtAddress.text ?? "", email: txtEmail.text ?? "" ,number: txtNumber.text!)
+            
+            self.navigationController?.popViewController(animated: true)
+            
+        }
         
     }
-
     
-    func checkForValidForm()
-    {
+    
+    func checkForValidForm() {
+        
         if firstNameError.isHidden && lastNameError.isHidden && contactError.isHidden
         {
             btnDone.isEnabled = true
@@ -284,15 +269,15 @@ class AddContactVC: UIViewController {
     
     
     
-        @IBAction func btnAddImageAction(_ sender: Any) {
-    
-            let storyboard = UIStoryboard(name: "ImageCollection", bundle: nil)
-    
-            let controller = storyboard.instantiateViewController(withIdentifier: "ImageCollectionVC")
-            self.present(controller, animated: true, completion: nil)
-    
-        }
+    @IBAction func btnAddImageAction(_ sender: Any) {
         
+        let storyboard = UIStoryboard(name: "ImageCollection", bundle: nil)
+        
+        let controller = storyboard.instantiateViewController(withIdentifier: "ImageCollectionVC")
+        self.navigationController?.pushViewController(controller, animated: true)
+        
+    }
+    
     
 }
 

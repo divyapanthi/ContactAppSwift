@@ -42,6 +42,9 @@
                 <constraint firstItem="gaE-Z6-jOk" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Jhd-pN-pxS"/>
             </constraints>
             <size key="customSize" width="238" height="109"/>
+            <connections>
+                <outlet property="imgProfile" destination="cXe-g2-cU9" id="PdZ-It-hfE"/>
+            </connections>
             <point key="canvasLocation" x="273.91304347826087" y="99.441964285714278"/>
         </collectionViewCell>
     </objects>

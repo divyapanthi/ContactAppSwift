@@ -29,7 +29,9 @@ extension ImageCollectionVC: UICollectionViewDelegate,  UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell  = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCollection ", for: indexPath) as! CellImageCollection
+        let cell  = collectionView.dequeueReusableCell(withReuseIdentifier: "CellImageCollection", for: indexPath) as! CellImageCollection
+        
+        cell.imgProfile.image = imageGallery[indexPath.row]
         
         return cell
         
@@ -37,10 +39,10 @@ extension ImageCollectionVC: UICollectionViewDelegate,  UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return  15
+        return  imageGallery.count
         
     }
-    
+        
     
 }
 
