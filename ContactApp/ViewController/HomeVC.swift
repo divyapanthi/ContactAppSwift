@@ -54,14 +54,12 @@ class HomeVC: UIViewController {
 }
 
 extension HomeVC: ContactProtocol {
-    
-    func passData(firstName: String, lastName: String, address: String, email: String, number: String?) {
-
+    func passData(firstName: String, lastName: String, address: String?, email: String?, number: String) {
         contactListArray.append(ContactItem(firstName: firstName, lastName: lastName, address: address, email: email, number: number))
-        
+                
         self.tblContacts.reloadData()
-            
     }
+
 }
 
 extension HomeVC: UITableViewDelegate, UITableViewDataSource{

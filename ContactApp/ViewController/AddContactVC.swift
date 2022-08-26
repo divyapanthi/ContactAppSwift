@@ -11,7 +11,7 @@ import UIKit
 
 protocol ContactProtocol: AnyObject{
     
-    func passData(firstName: String, lastName: String, address: String, email: String, number: String?)
+    func passData(firstName: String, lastName: String, address: String?, email: String?, number: String)
 }
 
 
@@ -61,11 +61,15 @@ class AddContactVC: UIViewController {
             self.txtNumber.isHidden = true
             
             btnDone.isEnabled = false
-            
+//
             firstNameError.isHidden = false
             lastNameError.isHidden = false
-            emailError.isHidden = false
-            addressError.isHidden = false
+            
+            emailError.isHidden = true
+            addressError.isHidden = true
+//            contactError.isHidden = true
+//
+
             contactError.isHidden = true
             
             firstNameError.text = "Required"
@@ -104,9 +108,9 @@ class AddContactVC: UIViewController {
     func invalidFirstName(_ value : String) ->  String?
     {
         
-        if value.count<5 {
+        if value.count<4 {
             
-            return  "First name should contain at least 4 characters"
+            return  "First name should contain at least 4 chars"
             
         }
         return nil
@@ -135,9 +139,9 @@ class AddContactVC: UIViewController {
     func invalidLastName(_ value : String) ->  String?
     {
 
-        if value.count<5 {
+        if value.count<4 {
             
-            return  "Last name should contain at least 4 characters"
+            return  "Last name should contain at least 4 chars"
             
         }
 
@@ -154,6 +158,10 @@ class AddContactVC: UIViewController {
             {
                 emailError.text = errorMessage
                 emailError.isHidden = false
+            }
+            else if email.isEmpty{
+                
+                emailError.isHidden = true
             }
             else
             {
@@ -233,47 +241,57 @@ class AddContactVC: UIViewController {
         
         UIView.animateKeyframes(withDuration: 1, delay: .zero) {
             
+            self.checkContact()
+        
+        }
+        
+    }
+    
+    func checkContact(){
+        
+        if txtNumber.text!.isEmpty{
+            
             self.txtNumber.isHidden = false
             
             self.contactError.isHidden = false
             
             self.btnAddContact.isEnabled = false
-        
+            
         }
-        
     }
     
     @IBAction func btnDoneAction(_ sender: Any) {
         
-        delegate?.passData(firstName: txtFirstName.text!, lastName: txtLastName.text!, address: txtAddress.text!, email: txtEmail.text! ,number: txtNumber.text!)
-        
+        checkContact()
+            
+        delegate?.passData(firstName: txtFirstName.text!, lastName: txtLastName.text!, address: txtAddress.text ?? "", email: txtEmail.text ?? "" ,number: txtNumber.text!)
         
         
     }
-    
+
     
     func checkForValidForm()
+    {
+        if firstNameError.isHidden && lastNameError.isHidden && contactError.isHidden
         {
-            if firstNameError.isHidden && lastNameError.isHidden && emailError.isHidden && addressError.isHidden
-            {
-                btnDone.isEnabled = true
-            }
-            else
-            {
-                btnDone.isEnabled = false
-            }
+            btnDone.isEnabled = true
         }
+        else
+        {
+            btnDone.isEnabled = false
+        }
+    }
     
     
     
-    //    @IBAction func btnAddImageAction(_ sender: Any) {
-    //
-    //        let storyboard = UIStoryboard(name: "ImageCollection", bundle: nil)
-    //
-    //        let controller = storyboard.instantiateViewController(withIdentifier: "ImageCollectionVC")
-    //        self.present(controller, animated: true, completion: nil)
-    //
-    //    }
+        @IBAction func btnAddImageAction(_ sender: Any) {
+    
+            let storyboard = UIStoryboard(name: "ImageCollection", bundle: nil)
+    
+            let controller = storyboard.instantiateViewController(withIdentifier: "ImageCollectionVC")
+            self.present(controller, animated: true, completion: nil)
+    
+        }
         
     
 }
