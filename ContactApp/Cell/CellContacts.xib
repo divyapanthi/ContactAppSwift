@@ -20,8 +20,8 @@
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="xxf-KN-wZC">
                         <rect key="frame" x="20" y="20" width="350" height="82"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="tpp-WN-VYE">
-                                <rect key="frame" x="0.0" y="0.5" width="40" height="81"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tpp-WN-VYE">
+                                <rect key="frame" x="0.0" y="0.0" width="40" height="82"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="bZi-Nf-0ax"/>
                                 </constraints>
@@ -76,7 +76,4 @@
             <point key="canvasLocation" x="225" y="71"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="person.circle.fill" catalog="system" width="128" height="121"/>
-    </resources>
 </document>

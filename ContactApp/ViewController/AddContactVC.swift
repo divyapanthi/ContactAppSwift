@@ -33,6 +33,8 @@ class AddContactVC: UIViewController {
     
     @IBOutlet weak var btnDone: UIBarButtonItem!
     
+    @IBOutlet weak var profileImage: UIImageView!
+    
     //Errors Label Field
     
     @IBOutlet weak var firstNameError: UILabel!
@@ -51,6 +53,8 @@ class AddContactVC: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        profileImage.image = UIImage(systemName: "person.circle.fill")
         resetForm()
         
     }

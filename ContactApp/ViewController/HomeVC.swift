@@ -19,6 +19,8 @@ struct ContactItem {
     
     var number: String?
     
+    var profileImage: UIImageView?
+    
 }
 
 class HomeVC: UIViewController {

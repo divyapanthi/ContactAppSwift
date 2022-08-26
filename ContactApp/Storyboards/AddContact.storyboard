@@ -22,8 +22,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HAY-wN-xx0">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="878"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="7oh-kJ-A0W">
-                                                <rect key="frame" x="147" y="10.5" width="120" height="119"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" translatesAutoresizingMaskIntoConstraints="NO" id="7oh-kJ-A0W">
+                                                <rect key="frame" x="147" y="10" width="120" height="120"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="120" id="CEQ-7y-9br"/>
                                                     <constraint firstAttribute="height" constant="120" id="KJF-tj-suy"/>
@@ -147,9 +147,6 @@
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
-                                                                <connections>
-                                                                    <action selector="addressChanged:" destination="TEs-Sl-kDu" eventType="editingChanged" id="vfZ-eV-QaV"/>
-                                                                </connections>
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
@@ -163,6 +160,9 @@
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
+                                                                <connections>
+                                                                    <action selector="phoneNumberChanged:" destination="TEs-Sl-kDu" eventType="editingChanged" id="5AZ-I3-CQp"/>
+                                                                </connections>
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Required" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HoW-9M-o2m">
                                                                 <rect key="frame" x="0.0" y="48" width="378" height="17"/>
@@ -245,6 +245,7 @@
                         <outlet property="emailError" destination="vqm-0O-yPQ" id="yAb-Ct-5a3"/>
                         <outlet property="firstNameError" destination="kNf-eE-eBp" id="QTq-bV-PfL"/>
                         <outlet property="lastNameError" destination="FU5-DV-WKh" id="41M-Kq-n7c"/>
+                        <outlet property="profileImage" destination="7oh-kJ-A0W" id="kcC-dp-B0d"/>
                         <outlet property="txtAddress" destination="9QN-QW-QQB" id="Mch-zy-Uy2"/>
                         <outlet property="txtEmail" destination="cBw-1t-61a" id="avC-85-DfT"/>
                         <outlet property="txtFirstName" destination="0qV-AS-jTA" id="Lng-X1-Aao"/>
@@ -276,7 +277,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="person.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="person" width="128" height="128"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
