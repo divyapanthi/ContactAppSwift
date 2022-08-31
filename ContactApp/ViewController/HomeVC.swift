@@ -23,6 +23,11 @@ struct ContactItem {
     
 }
 
+protocol ContactDetailProtocol: AnyObject{
+    
+    func passData(firstName: String, lastName: String, address: String?, email: String?, number: String, profilePic: UIImage)
+}
+
 class HomeVC: UIViewController {
     
     var contactListArray = [ContactItem]()
@@ -115,7 +120,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return UITableView.automaticDimension
+        return 120
         
     }
     
@@ -123,10 +128,12 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource{
         
         let storyboard = UIStoryboard(name: "ViewProfile", bundle: nil)
         
-        let controller = storyboard.instantiateViewController(withIdentifier: "ViewProfile")
-                
+        let controller = storyboard.instantiateViewController(withIdentifier: "ProfileVC")  as! ProfileVC
+        
+        controller.contactItems = self.contactListArray[indexPath.row]
+        
         self.navigationController?.pushViewController(controller, animated: true)
-       
+        
     }
     
 }
