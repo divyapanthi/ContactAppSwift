@@ -11,11 +11,17 @@ import UIKit
 
 protocol ContactProtocol: AnyObject{
     
-    func passData(firstName: String, lastName: String, address: String?, email: String?, number: String)
+    func passData(firstName: String, lastName: String, address: String?, email: String?, number: String, profilePic: UIImage)
 }
 
 
-class AddContactVC: UIViewController {
+class AddContactVC: UIViewController, ProfileImageProtocol {
+    
+    func passProfile(profileImage: UIImage) {
+        
+        self.profileImage.image = profileImage
+        
+    }
     
     //UITextField and Buttons
     
@@ -55,6 +61,7 @@ class AddContactVC: UIViewController {
         super.viewDidLoad()
         
         profileImage.image = UIImage(systemName: "person.circle.fill")
+        
         resetForm()
         
     }
@@ -62,6 +69,7 @@ class AddContactVC: UIViewController {
     
     func resetForm()
     {
+        
         self.txtNumber.isHidden = true
         
         btnDone.isEnabled = false
@@ -248,9 +256,9 @@ class AddContactVC: UIViewController {
             
             self.btnAddContact.isEnabled = false
             
-        }else{
-            
-            delegate?.passData(firstName: txtFirstName.text!, lastName: txtLastName.text!, address: txtAddress.text ?? "", email: txtEmail.text ?? "" ,number: txtNumber.text!)
+        }
+        else{
+            delegate?.passData(firstName: txtFirstName.text!, lastName: txtLastName.text!, address: txtAddress.text ?? "", email: txtEmail.text ?? "" ,number: txtNumber.text!, profilePic: profileImage.image!)
             
             self.navigationController?.popViewController(animated: true)
             
@@ -277,7 +285,10 @@ class AddContactVC: UIViewController {
         
         let storyboard = UIStoryboard(name: "ImageCollection", bundle: nil)
         
-        let controller = storyboard.instantiateViewController(withIdentifier: "ImageCollectionVC")
+        let controller = storyboard.instantiateViewController(withIdentifier: "ImageCollectionVC") as! ImageCollectionVC
+        
+        controller.delegate = self
+        
         self.navigationController?.pushViewController(controller, animated: true)
         
     }
@@ -286,3 +297,9 @@ class AddContactVC: UIViewController {
 }
 
 
+
+extension UIImageView {
+    
+    var isEmpty: Bool { image == nil }
+    
+}

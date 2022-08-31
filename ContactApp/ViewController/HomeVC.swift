@@ -19,7 +19,7 @@ struct ContactItem {
     
     var number: String?
     
-    var profileImage: UIImageView?
+    var profileImage: UIImage?
     
 }
 
@@ -57,15 +57,15 @@ class HomeVC: UIViewController {
 
 extension HomeVC: ContactProtocol {
     
-    func passData(firstName: String, lastName: String, address: String?, email: String?, number: String) {
-            
-        contactListArray.append(ContactItem(firstName: firstName, lastName: lastName, address: address, email: email, number: number))
+    func passData(firstName: String, lastName: String, address: String?, email: String?, number: String, profilePic: UIImage) {
+        
+        contactListArray.append(ContactItem(firstName: firstName, lastName: lastName, address: address, email: email, number: number, profileImage: profilePic))
                     
         self.tblContacts.reloadData()
      
-        
     }
-
+    
+    
 }
 
 extension HomeVC: UITableViewDelegate, UITableViewDataSource{
@@ -84,6 +84,8 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource{
         cell.lblAddress.text = self.contactListArray[indexPath.row].address
         
         cell.lblEmail.text = self.contactListArray[indexPath.row].email
+        
+        cell.imgPerson.image = self.contactListArray[indexPath.row].profileImage
 
         return cell
         
