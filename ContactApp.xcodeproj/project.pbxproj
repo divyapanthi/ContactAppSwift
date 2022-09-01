@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA31890C28C0998E00C2A485 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA31890B28C0998E00C2A485 /* Utilities.swift */; };
 		DA777B9428B4A69A00D9498B /* CellContacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA777B9228B4A69A00D9498B /* CellContacts.swift */; };
 		DA777B9528B4A69A00D9498B /* CellContacts.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA777B9328B4A69A00D9498B /* CellContacts.xib */; };
 		DA91C5A928B3975C0079798F /* AddContact.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA91C5A828B3975C0079798F /* AddContact.storyboard */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DA31890B28C0998E00C2A485 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		DA777B9228B4A69A00D9498B /* CellContacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellContacts.swift; sourceTree = "<group>"; };
 		DA777B9328B4A69A00D9498B /* CellContacts.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellContacts.xib; sourceTree = "<group>"; };
 		DA91C5A828B3975C0079798F /* AddContact.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddContact.storyboard; sourceTree = "<group>"; };
@@ -57,6 +59,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DA31890A28C0997A00C2A485 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				DA31890B28C0998E00C2A485 /* Utilities.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		DA777B9128B4A5E100D9498B /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +119,7 @@
 		DA9C7C4A28B38B7F009C6200 /* ContactApp */ = {
 			isa = PBXGroup;
 			children = (
+				DA31890A28C0997A00C2A485 /* Utilities */,
 				DA777B9128B4A5E100D9498B /* Cell */,
 				DA91C5A728B3972F0079798F /* Storyboards */,
 				DA91C5A628B397290079798F /* ViewController */,
@@ -203,6 +214,7 @@
 				DA777B9428B4A69A00D9498B /* CellContacts.swift in Sources */,
 				DA9C7C5028B38B7F009C6200 /* HomeVC.swift in Sources */,
 				DA9C7C4C28B38B7F009C6200 /* AppDelegate.swift in Sources */,
+				DA31890C28C0998E00C2A485 /* Utilities.swift in Sources */,
 				DA9C7C4E28B38B7F009C6200 /* SceneDelegate.swift in Sources */,
 				DA91C5AB28B39B370079798F /* AddContactVC.swift in Sources */,
 			);

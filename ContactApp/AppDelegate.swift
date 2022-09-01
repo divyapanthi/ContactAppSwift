@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  ContactApp
 //
-//  Created by Sushil Dhital on 22/08/2022.
+//  Created by Divya Panthi on 22/08/2022.
 //
 
 import UIKit

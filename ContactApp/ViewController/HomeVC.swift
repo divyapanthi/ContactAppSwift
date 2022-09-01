@@ -23,10 +23,6 @@ struct ContactItem {
     
 }
 
-protocol ContactDetailProtocol: AnyObject{
-    
-    func passData(firstName: String, lastName: String, address: String?, email: String?, number: String, profilePic: UIImage)
-}
 
 class HomeVC: UIViewController {
     
@@ -54,6 +50,10 @@ class HomeVC: UIViewController {
         
         controller.delegate = self
         
+        let navItem = UIBarButtonItem()
+        navItem.title = "Add Contact"
+        navigationItem.backBarButtonItem = navItem
+        
         self.navigationController?.pushViewController(controller, animated: true)
                 
     }
@@ -63,7 +63,7 @@ class HomeVC: UIViewController {
 extension HomeVC: ContactProtocol {
     
     func passData(firstName: String, lastName: String, address: String?, email: String?, number: String, profilePic: UIImage) {
-        
+                
         contactListArray.append(ContactItem(firstName: firstName, lastName: lastName, address: address, email: email, number: number, profileImage: profilePic))
                     
         self.tblContacts.reloadData()
@@ -132,9 +132,27 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource{
         
         controller.contactItems = self.contactListArray[indexPath.row]
         
+        controller.delegate = self
+        
+        let navItem = UIBarButtonItem()
+        navItem.title = "View Profile"
+        navigationItem.backBarButtonItem = navItem
+        
         self.navigationController?.pushViewController(controller, animated: true)
         
     }
     
 }
 
+extension HomeVC: EditedDelegate{
+    
+    func passEditedData(firstName: String, lastNme: String, email: String, number: String, address: String, profilePic: UIImage!) {
+        
+        contactListArray.removeAll()
+        
+        contactListArray.append(ContactItem(firstName: firstName, lastName: lastNme, address: address, email: email, number: number, profileImage: profilePic))
+        
+        tblContacts.reloadData()
+        
+    }
+}

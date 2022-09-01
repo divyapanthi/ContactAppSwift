@@ -51,9 +51,6 @@ class AddContactVC: UIViewController, ProfileImageProtocol {
     
     @IBOutlet weak var contactError: UILabel!
     
-    @IBOutlet weak var addressError: UILabel!
-    
-    
     weak var delegate: ContactProtocol?
     
     override func viewDidLoad() {
@@ -67,22 +64,16 @@ class AddContactVC: UIViewController, ProfileImageProtocol {
     }
     
     
-    func resetForm()
-    {
+    func resetForm(){
         
         self.txtNumber.isHidden = true
         
         btnDone.isEnabled = false
+        
         firstNameError.isHidden = false
         lastNameError.isHidden = false
-        
         emailError.isHidden = true
-        
         contactError.isHidden = true
-        
-        firstNameError.text = "Required"
-        lastNameError.text = "Required"
-        contactError.text = "Required"
         
         txtFirstName.text = ""
         txtLastName.text = ""
@@ -92,11 +83,11 @@ class AddContactVC: UIViewController, ProfileImageProtocol {
     }
     
     
-    @IBAction func firstNameChanged(_ sender: Any)
-    {
+    @IBAction func firstNameChanged(_ sender: Any) {
+        
         if let firstName = txtFirstName.text
         {
-            if let errorMessage = invalidFirstName(firstName)
+            if let errorMessage = Utilities.invalidFirstName(firstName)
             {
                 firstNameError.text = errorMessage
                 firstNameError.isHidden = false
@@ -111,23 +102,12 @@ class AddContactVC: UIViewController, ProfileImageProtocol {
         
     }
     
-    func invalidFirstName(_ value : String) ->  String?
-    {
         
-        if value.count<4 {
-            
-            return  "First name should contain at least 4 chars"
-            
-        }
-        return nil
+    @IBAction func lastNameChanged(_ sender: Any) {
         
-    }
-    
-    @IBAction func lastNameChanged(_ sender: Any)
-    {
         if let lastName = txtLastName.text
         {
-            if let errorMessage = invalidLastName(lastName)
+            if let errorMessage = Utilities.invalidLastName(lastName)
             {
                 lastNameError.text = errorMessage
                 lastNameError.isHidden = false
@@ -142,25 +122,12 @@ class AddContactVC: UIViewController, ProfileImageProtocol {
         
     }
     
-    func invalidLastName(_ value : String) ->  String?
-    {
-        
-        if value.count<4 {
-            
-            return  "Last name should contain at least 4 chars"
-            
-        }
-        
-        return nil
-        
-    }
     
-    
-    @IBAction func emailChanged(_ sender: Any)
-    {
+    @IBAction func emailChanged(_ sender: Any) {
+        
         if let email = txtEmail.text
         {
-            if let errorMessage = invalidEmail(email)
+            if let errorMessage = Utilities.invalidEmail(email)
             {
                 emailError.text = errorMessage
                 emailError.isHidden = false
@@ -177,29 +144,14 @@ class AddContactVC: UIViewController, ProfileImageProtocol {
         
         checkForValidForm()
     }
-    
-    func invalidEmail(_ value: String) -> String?
-    {
-        let reqularExpression = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        
-        let predicate = NSPredicate(format: "SELF MATCHES %@", reqularExpression)
-        
-        if !predicate.evaluate(with: value)
-            
-        {
-            return "Invalid Email Address"
-            
-        }
-        
-        return nil
-    }
+
     
     
-    @IBAction func phoneNumberChanged(_ sender: Any)
-    {
+    @IBAction func phoneNumberChanged(_ sender: Any) {
+        
         if let phoneNumber = txtNumber.text
         {
-            if let errorMessage = invalidPhoneNumber(phoneNumber)
+            if let errorMessage = Utilities.invalidPhoneNumber(phoneNumber)
             {
                 contactError.text = errorMessage
                 contactError.isHidden = false
@@ -213,21 +165,7 @@ class AddContactVC: UIViewController, ProfileImageProtocol {
         
     }
     
-    func invalidPhoneNumber(_ value: String) -> String?
-    {
-        let set = CharacterSet(charactersIn: value)
-        if !CharacterSet.decimalDigits.isSuperset(of: set)
-        {
-            return "Phone Number must contain only digits"
-        }
-        
-        if value.count != 10
-        {
-            return "Phone Number must be 10 Digits in Length"
-        }
-        return nil
-        
-    }
+    
     
     
     @IBAction func btnAddContactAction(_ sender: Any) {
@@ -295,7 +233,6 @@ class AddContactVC: UIViewController, ProfileImageProtocol {
     
     
 }
-
 
 
 extension UIImageView {
