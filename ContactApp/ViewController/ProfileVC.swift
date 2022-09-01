@@ -46,11 +46,11 @@ class ProfileVC: UIViewController {
     var contactItems : ContactItem?
     
     var delegate: EditedDelegate?
-
-    override func viewDidLoad() {
-
-        super.viewDidLoad()
     
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        
         viewForm()
         
         
@@ -138,7 +138,7 @@ class ProfileVC: UIViewController {
             }else{
                 emailError.isHidden = true
             }
-
+            
         }
         
         checkForValidForm()
@@ -176,7 +176,7 @@ class ProfileVC: UIViewController {
     
     @IBAction func btnCancelAction(_ sender: Any) {
         
-       hideButton()
+        hideButton()
         
         disableAllTextField()
         
@@ -255,22 +255,22 @@ class ProfileVC: UIViewController {
         self.txtEmail.isEnabled = true
         self.txtAddress.isEnabled = true
         self.txtNumber.isEnabled = true
-
+        
         
     }
     
     func disableAllTextField(){
-
+        
         self.txtFirstName.isEnabled = false
         self.txtLastName.isEnabled = false
         self.txtEmail.isEnabled = false
         self.txtAddress.isEnabled = false
         self.txtNumber.isEnabled = false
-
+        
         
     }
     
-
+    
 }
 
 extension UITextField {

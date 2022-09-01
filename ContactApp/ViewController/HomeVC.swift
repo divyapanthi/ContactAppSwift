@@ -41,7 +41,7 @@ class HomeVC: UIViewController {
         tblContacts.estimatedRowHeight = UITableView.automaticDimension
         
     }
-
+    
     @IBAction func btnAddContact(_ sender: Any) {
         
         let storyboard = UIStoryboard(name: "AddContact", bundle: nil)
@@ -55,7 +55,7 @@ class HomeVC: UIViewController {
         navigationItem.backBarButtonItem = navItem
         
         self.navigationController?.pushViewController(controller, animated: true)
-                
+        
     }
     
 }
@@ -63,11 +63,11 @@ class HomeVC: UIViewController {
 extension HomeVC: ContactProtocol {
     
     func passData(firstName: String, lastName: String, address: String?, email: String?, number: String, profilePic: UIImage) {
-                
+        
         contactListArray.append(ContactItem(firstName: firstName, lastName: lastName, address: address, email: email, number: number, profileImage: profilePic))
-                    
+        
         self.tblContacts.reloadData()
-     
+        
     }
     
     
@@ -81,7 +81,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellContacts") as! CellContacts
-
+        
         cell.lblFullName.text = "\(self.contactListArray[indexPath.row].firstName?.capitalized ?? "") " + "\(self.contactListArray[indexPath.row].lastName?.capitalized ?? "")"
         
         cell.lblPhoneNumber.text = self.contactListArray[indexPath.row].number
@@ -91,14 +91,14 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource{
         cell.lblEmail.text = self.contactListArray[indexPath.row].email
         
         cell.imgPerson.image = self.contactListArray[indexPath.row].profileImage
-
+        
         return cell
         
     }
     
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-
+        
         if editingStyle == .delete  {
             
             let alert = UIAlertController(title: "Delete Contact?", message: "Are you sure you want to delete this contact \(contactListArray[indexPath.row].firstName?.capitalized ?? "")?",   preferredStyle: .alert)
@@ -108,14 +108,14 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource{
             alert.addAction(UIAlertAction(title: "Delete", style: .default, handler: { (_) in
                 
                 self.contactListArray.remove(at: indexPath.row)
-                  
-                  tableView.deleteRows(at: [indexPath], with: .automatic)
+                
+                tableView.deleteRows(at: [indexPath], with: .automatic)
             }))
-          
+            
             self.present(alert, animated: true)
-
+            
         }
-
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

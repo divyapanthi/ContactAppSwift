@@ -102,7 +102,7 @@ class AddContactVC: UIViewController, ProfileImageProtocol {
         
     }
     
-        
+    
     @IBAction func lastNameChanged(_ sender: Any) {
         
         if let lastName = txtLastName.text
@@ -144,7 +144,7 @@ class AddContactVC: UIViewController, ProfileImageProtocol {
         
         checkForValidForm()
     }
-
+    
     
     
     @IBAction func phoneNumberChanged(_ sender: Any) {
