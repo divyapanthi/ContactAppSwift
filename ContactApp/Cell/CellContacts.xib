@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -52,10 +53,26 @@
                             </label>
                         </subviews>
                     </stackView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zWz-CO-6yG" userLabel="CallButton">
+                        <rect key="frame" x="486" y="74.5" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="25" id="PU3-cp-h7K"/>
+                            <constraint firstAttribute="height" constant="25" id="nyR-Up-3Q7"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" image="phone.fill" catalog="system">
+                            <color key="baseForegroundColor" systemColor="systemGreenColor"/>
+                        </buttonConfiguration>
+                        <connections>
+                            <action selector="btnCallAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="e0F-2i-t8Z"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="zWz-CO-6yG" secondAttribute="trailing" constant="30" id="F6s-4U-ZjJ"/>
                     <constraint firstAttribute="bottom" secondItem="BAf-gI-grn" secondAttribute="bottom" constant="20" id="PmJ-Jj-pnd"/>
                     <constraint firstItem="tpp-WN-VYE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="bhF-3y-Dq8"/>
+                    <constraint firstItem="zWz-CO-6yG" firstAttribute="centerY" secondItem="tpp-WN-VYE" secondAttribute="centerY" id="c6c-eG-lfT"/>
                     <constraint firstItem="BAf-gI-grn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="nc3-BN-P4P"/>
                     <constraint firstItem="BAf-gI-grn" firstAttribute="centerY" secondItem="tpp-WN-VYE" secondAttribute="centerY" id="nfJ-lS-d78"/>
                     <constraint firstItem="BAf-gI-grn" firstAttribute="leading" secondItem="tpp-WN-VYE" secondAttribute="trailing" constant="16" id="o3g-0A-XvV"/>
@@ -73,4 +90,10 @@
             <point key="canvasLocation" x="348.55072463768118" y="88.392857142857139"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="phone.fill" catalog="system" width="128" height="114"/>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

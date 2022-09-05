@@ -92,6 +92,13 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource{
         
         cell.imgPerson.image = self.contactListArray[indexPath.row].profileImage
         
+        cell.callActionTapped = {[unowned self] in
+            
+            dialNumber(number: "9748284236")
+                   
+        }
+        
+        
         return cell
         
     }
@@ -141,6 +148,21 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource{
         self.navigationController?.pushViewController(controller, animated: true)
         
     }
+    
+    func dialNumber(number : String) {
+
+     if let url = URL(string: "tel://\(number)"),
+       UIApplication.shared.canOpenURL(url) {
+          if #available(iOS 10, *) {
+            UIApplication.shared.open(url, options: [:], completionHandler:nil)
+           } else {
+               UIApplication.shared.openURL(url)
+           }
+       } else {
+                // add error message here
+       }
+    }
+
     
 }
 

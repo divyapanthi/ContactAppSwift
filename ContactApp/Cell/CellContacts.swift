@@ -18,6 +18,10 @@ class CellContacts: UITableViewCell {
     @IBOutlet weak var lblAddress: UILabel!
     
     @IBOutlet weak var lblEmail: UILabel!
+    
+    var callActionTapped : (() -> Void)?
+    
+    
 
     override func awakeFromNib() {
         
@@ -31,5 +35,13 @@ class CellContacts: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    @IBAction func btnCallAction(_ sender: Any) {
+        
+        callActionTapped?()
+            
+    }
+    
+    
     
 }
